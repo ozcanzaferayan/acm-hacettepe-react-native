@@ -1,17 +1,29 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, StyleSheet, Text, FlatList} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import Post from '../components/Post';
 
 const TweetsScreen = (props) => {
   console.log('1111111111', props);
-
   const [tweets, setTweets] = useState([]);
-  useEffect(() => {
+
+  const getTweets = () => {
     fetch('http://localhost:3000/tweets')
       .then((response) => response.json())
       .then((dataTweets) => setTweets(dataTweets));
-  }, []);
+  };
+
+  useEffect(() => {
+    const unsubscribe = props.navigation.addListener('focus', () => {
+      getTweets();
+    });
+    return unsubscribe;
+  }, [props.navigation]);
   const handleGoToAddTweets = () => {
     props.navigation.push('AddTweet', {myProp: 'Zafer'});
   };
@@ -34,9 +46,10 @@ const TweetsScreen = (props) => {
 const styles = StyleSheet.create({
   container: {justifyContent: 'center', flex: 1, backgroundColor: 'white'},
   addButton: {
+    position: 'absolute',
     alignSelf: 'flex-end',
-    marginBottom: 10,
-    marginEnd: 10,
+    bottom: 50,
+    end: 20,
     width: 60,
     height: 60,
     borderRadius: 30,

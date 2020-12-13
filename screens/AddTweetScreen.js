@@ -6,7 +6,7 @@ const AddTweetScreen = (props) => {
   const [text, setText] = useState('');
   const handleAfterSend = () => {
     setText('');
-    props.navigation.push('Tweets');
+    props.navigation.goBack();
   };
   const handlePress = () => {
     fetch('http://localhost:3000/tweets', {
