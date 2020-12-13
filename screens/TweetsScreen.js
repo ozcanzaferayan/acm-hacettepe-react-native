@@ -1,23 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Image,
-  FlatList,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, FlatList} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 import Post from '../components/Post';
 
 const TweetsScreen = (props) => {
@@ -36,7 +19,7 @@ const TweetsScreen = (props) => {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={tweets}
-        keyExtractor={(item, index) => item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={({item}) => (
           <Post tweet={item} navigation={props.navigation} />
         )}

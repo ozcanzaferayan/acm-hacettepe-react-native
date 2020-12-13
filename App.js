@@ -2,7 +2,6 @@ import React from 'react';
 import TweetsScreen from './screens/TweetsScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Text, View} from 'react-native';
 import AddTweetScreen from './screens/AddTweetScreen';
 import TweetDetailScreen from './screens/TweetDetailScreen';
 
