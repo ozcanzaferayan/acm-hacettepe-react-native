@@ -25,14 +25,14 @@ const AddTweetScreen = (props) => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => handleAfterSend())
+      .then(() => handleAfterSend())
       .catch((error) => console.error(error));
   };
   return (
     <View>
       <TextInput
         placeholder="Type here to translate!"
-        onChangeText={(text) => setText(text)}
+        onChangeText={(t) => setText(t)}
         defaultValue={text}
       />
       <TouchableOpacity style={styles.button} onPress={handlePress}>
